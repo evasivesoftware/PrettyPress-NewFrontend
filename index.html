@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>PrettyPress</title>
+	<meta charset="utf-8">
+	<link href="assets/css/prettypress.css" rel="stylesheet">
+	<link href="assets/css/themes/dark.css" rel="stylesheet">
+</head>
+<body>
+	<div id="prettypress">
+		<div class="prettypress-editor" id="prettypress-editor">
+			<div class="sidebar" id="sidebar">
+				<ul>
+					<li><a href="#"><span class="prettyicon">&larr;</span> Back to Wordpress</a></li>
+					<li><a href="#">Publish</a>
+						<ul class="sub-menu">
+							<li><a href="#">Save</a></li>
+							<li><a href="#">Schedule</a></li>
+							<li><a href="#">Publish</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Featured image</a></li>
+				</ul>
+			</div>
+
+			<div class="post-editor">
+				<input tabindex="1" class="post-title" id="post-title" type="text" />
+
+				<div class="post-editor-nav">
+					<ul>
+						<li><a class="active" href="#">Markdown</a></li>
+						<li><a href="#">Visual</a></li>
+						<li><a href="#">HTML</a></li>
+					</ul>
+				</div>
+
+				<textarea tabindex="2" class="markdown" id="post-editor"></textarea>
+			</div>
+		</div>
+
+		<div class="prettypress-preview" id="prettypress-preview">
+			<iframe class="prettypress-iframe" id="prettypress-iframe" src="example.html"></iframe>
+		</div>
+	</div>
+
+<script src="assets/js/vendor/marked.js"></script>
+<script src="assets/js/prettypress.js"></script>
+<script>
+	var prettypress = new prettypress({
+		title_rel: "prettypress_title",
+		content_rel: "prettypress_content"
+	});
+	prettypress.resize();
+</script>
+</body>
+</html>

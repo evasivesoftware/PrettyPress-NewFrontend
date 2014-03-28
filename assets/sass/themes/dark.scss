@@ -1,0 +1,47 @@
+.prettypress-editor {
+  background: #2d2d2d;
+  
+  .sidebar {
+    background: #1a1a1a;
+    color: #333;
+    
+    ul {          
+      li a:hover, li:hover {
+        background: #222; 
+      } 
+    }
+    
+    a {
+      color: #888;
+    }
+
+    ul.sub-menu {
+      background: #222;
+
+      li a:hover {
+        background: #333;
+      }
+    }
+  }
+
+  input, textarea {
+    background: #222;
+    color: #ddd;
+  }
+
+  .post-editor-nav {
+
+    background: #222;
+        
+    a {
+      text-decoration: none;
+      color: #555;
+    }
+    
+    a.active {
+      color: #ff9b25; 
+    }
+    
+  }
+ 
+}

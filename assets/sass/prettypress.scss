@@ -1,0 +1,181 @@
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans+Mono);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+
+@mixin borderbox() {
+  -webkit-box-sizing: border-box; 
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Open sans', Helvetica, Arial;
+}
+
+.prettypress-editor {
+  position: absolute;
+  width: 50%;
+  min-height: 100%;
+  background: #eee;
+  left: 0;
+  top: 0;
+  overflow-x: hidden;
+  
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -190px;
+    min-width: 200px;
+    height: 100%;
+    background: #222;
+    color: #bbb;
+    z-index: 10;
+    font-size: 9pt;
+    text-transform: uppercase;
+    @include borderbox();
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    -khtml-opacity: 0;
+    opacity: 0;
+    
+    transition: 0.3s all;
+
+    
+    ul {
+      margin: 0;
+      padding: 0;
+      
+      li {
+        list-style-type: none;
+        display: block;
+        
+        
+        a {
+          display: block;
+          padding: 1em;
+        }
+      }
+      
+      li a:hover {
+        background: #444; 
+      }
+      
+      li:first-of-type {
+        border-top: none; 
+      }
+      
+      .prettyicon {
+        padding-right: 0.5em; 
+      }
+      
+    }
+    
+    a {
+      color: #bbb;
+      text-decoration: none;
+    }
+  }
+
+  ul.sub-menu {
+    font-size: 90%;
+
+    li a {
+      padding: 0.75em 0.75em 0.75em 2.5em!important;
+    }
+
+  }
+  
+  .sidebar:hover {
+    left: 0; 
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=1000);
+    -moz-opacity: 100;
+    -khtml-opacity: 100;
+    opacity: 100;
+    
+  }
+
+  
+  .post-editor {
+    padding: 1em;
+  }
+  
+  input, textarea {
+    background: #fff;
+    display: block;
+    width: 100%;
+    border-style: none;
+    @include borderbox();
+  }
+
+  input,textarea:focus {
+    outline: none;
+  }
+  
+  input.post-title {
+    font-size: 20px; 
+    padding: 0.4em 0.5em;
+    font-family: 'Open sans', Helvetica, Arial, sans-serif;
+    font-size: 200;
+  }
+  
+  .post-editor-nav {
+    margin: 1em 0 0 0;
+    width: 100%;
+    background: #fff;
+    
+    ul {
+      margin: 0;
+      padding: 1em;
+      font-size: 9pt;
+      text-transform: uppercase;
+      
+      li {
+        list-style-type: none;
+        display: inline;
+        padding-right: 1em;
+      }
+      
+    }
+    
+    .cf {
+      clear: both; 
+    }
+    
+    a {
+      text-decoration: none;
+      color: #bbb;
+    }
+    
+    a.active {
+      color: #666; 
+    }
+    
+  }
+  
+  textarea.markdown {
+    font-family: 'Open sans', Helvetica, Arial, sans-serif;
+    margin: -1px 0 0 0;
+    min-height: 300px;
+    padding: 1em;
+    @include borderbox();
+    font-size: 12pt;
+  }
+  
+}
+
+.prettypress-preview {
+  position: absolute;
+  width: 50%;
+  min-height: 100%;
+  right: 0;
+  top: 0;
+  
+  iframe.prettypress-iframe {
+    position: absolute;
+    width: 99%;
+    height: 100%;
+    border-style: none;
+  }
+}
