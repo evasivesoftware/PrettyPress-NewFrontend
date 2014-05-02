@@ -7,6 +7,10 @@
 	<link href="assets/css/themes/dark.css" rel="stylesheet">
 </head>
 <body>
+	<div id="prettypress-resize" class="prettypress-resize"></div>
+	<div id="prettypress-editor-resize" class="prettypress-rhd prettypress-editor-resize"></div>
+	<div id="prettypress-preview-resize" class="prettypress-rhd prettypress-preview-resize"></div>
+
 	<div id="prettypress">
 		<div class="prettypress-editor" id="prettypress-editor">
 			<div class="sidebar" id="sidebar">
@@ -20,6 +24,13 @@
 						</ul>
 					</li>
 					<li><a href="#">Featured image</a></li>
+					<li><a href="#">Layout</a>
+						<ul class="sub-menu">
+							<li><a href="#">Desktop</a></li>
+							<li><a href="#">Tablet</a></li>
+							<li><a href="#">Mobile</a></li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 
@@ -27,14 +38,25 @@
 				<input tabindex="1" class="post-title" id="post-title" type="text" />
 
 				<div class="post-editor-nav">
-					<ul>
+					<ul class="nav-left">
 						<li><a class="active" href="#">Markdown</a></li>
 						<li><a href="#">Visual</a></li>
 						<li><a href="#">HTML</a></li>
 					</ul>
+					<ul class="nav-right">
+						<li><a href="#" id="prettypress-trigger-post-meta">Post meta</a></li>
+					</ul>
+					<div class="cf"></div>
 				</div>
 
-				<textarea tabindex="2" class="markdown" id="post-editor"></textarea>
+				<div class="tab" id="markdown-tab">
+					<textarea tabindex="2" class="markdown" id="post-editor"></textarea>
+				</div>
+
+				<div class="tab tab-hidden tab-meta" id="meta-tab">
+					asdasd
+				</div>
+
 			</div>
 		</div>
 
