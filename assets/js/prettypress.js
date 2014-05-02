@@ -1,5 +1,8 @@
 function prettypress( config ) {
 
+	this.config = {};
+	this.config.min_editor_width = 0;
+
 	if ( config ) {
 		this.config = config;
 	}
@@ -35,6 +38,7 @@ function prettypress( config ) {
 
 	//Triggers.
 	this.trigger_post_meta = document.getElementById("prettypress-trigger-post-meta");
+	this.trigger_markdown = document.getElementById("prettypress-trigger-meta");
 
 	var ppglobal = this;
 
@@ -143,12 +147,23 @@ function prettypress( config ) {
 		if ( ppglobal.active_editor === "markdown" ) {
 			//Hide markdown.
 			element_hide = ppglobal.tab_markdown;
+			removeClass(ppglobal.trigger_markdown, "active");
+		} else if ( ppglobal.active_editor === "meta" ) {
+			element_hide = ppglobal.tab_meta;
+			removeClass(ppglobal.trigger_post_meta, "active");
 		}
 
 		//element to enable.
 		if ( editorEnable === "meta" ) {
 			element_enable = ppglobal.tab_meta;
+			ppglobal.active_editor = "meta";
+		} else if ( editorEnable === "markdown" ) {
+			element_enable = ppglobal.tab_markdown;
+			ppglobal.active_editor = "markdown";
 		}
+
+		removeClass( element_enable, "animated" );
+		removeClass( element_enable, "rollOut" );
 
 		//Animation.
 		element_hide.classList.add("animated");
@@ -159,11 +174,19 @@ function prettypress( config ) {
 			element_hide.style.display = "none";
 
 			element_enable.classList.add("animated");
-			element_enable.classList.add("fadeIn");
+			element_enable.classList.add("rotateInDownRight");
 			element_enable.style.display = "block";
 
 		},500);
 
+	}
+
+	this.resizeTo = function (x,xpreview) {
+		ppglobal.resize_editor.style.width = x + "px";
+		ppglobal.resize_preview.style.width = xpreview + "px";
+
+		ppglobal.editor_width = x + "px";
+		ppglobal.preview_width = xpreview + "px";
 	}
 
 	document.onmouseup = function() {
@@ -197,13 +220,13 @@ function prettypress( config ) {
 			  x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft; 
 			}
 
+			if ( x < config.min_editor_width ) {
+				return;
+			}
+
 			var xpreview = ppglobal.window_width - x;
 
-			ppglobal.resize_editor.style.width = x + "px";
-			ppglobal.resize_preview.style.width = xpreview + "px";
-
-			ppglobal.editor_width = x + "px";
-			ppglobal.preview_width = xpreview + "px";
+			ppglobal.resizeTo( x, xpreview );
 
 		}
 
@@ -212,9 +235,24 @@ function prettypress( config ) {
 	this.trigger_post_meta.onclick = function(e) {
 		
 		e.preventDefault();
-		ppglobal.toggle_editor("meta");
 
-		this.classList.add("active");
+		if ( ppglobal.active_editor != "meta" ) {
+			ppglobal.toggle_editor("meta");
+			this.classList.add("active");
+		}
+		return false;
+
+	}
+
+	this.trigger_markdown.onclick = function(e) {
+		
+		e.preventDefault();
+
+		if ( ppglobal.active_editor != "markdown" ) {
+			ppglobal.toggle_editor("markdown");
+			this.classList.add("active");
+		}
+		
 		return false;
 
 	}
@@ -229,3 +267,41 @@ function prettypress( config ) {
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Third party
+
+//http://toddmotto.com/creating-jquery-style-functions-in-javascript-hasclass-addclass-removeclass-toggleclass/
+var hasClass = function (elem, className) {
+    return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
+}
+ 
+var addClass = function (elem, className) {
+    if (!hasClass(elem, className)) {
+        elem.className += ' ' + className;
+    }
+}
+ 
+var removeClass = function (elem, className) {
+    var newClass = ' ' + elem.className.replace( /[\t\r\n]/g, ' ') + ' ';
+    if (hasClass(elem, className)) {
+        while (newClass.indexOf(' ' + className + ' ') >= 0 ) {
+            newClass = newClass.replace(' ' + className + ' ', ' ');
+        }
+        elem.className = newClass.replace(/^\s+|\s+$/g, '');
+    }
+}

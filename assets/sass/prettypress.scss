@@ -1,7 +1,7 @@
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans+Mono);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
 
 @import "animate";
+@import "dashicons";
 
 @mixin borderbox() {
   -webkit-box-sizing: border-box; 
@@ -78,7 +78,10 @@ body {
     -khtml-opacity: 0;
     opacity: 0;
     
-    transition: 0.3s all;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
 
     
     ul {
@@ -203,6 +206,8 @@ body {
   
   .tab {
     margin: -1px 0 0 0;
+    width: 100%;
+    overflow: hidden;
   }
 
   .tab-hidden {
@@ -210,9 +215,78 @@ body {
   }
 
   .tab-meta {
-    margin: 0;
+    margin: 1em 0 0 0;
     padding: 0;
     height: auto;
+    width: 100%;
+
+    .featured-image {
+      font-size: 100px;
+      text-align: center;
+      width: 100%;
+      min-height: 100px;
+      padding: 20px 0;
+      cursor: pointer;
+    }
+
+    .prettypress_meta {
+      float: left;
+      width: 49%;
+      margin-right: 0.5%;
+      position: relative;
+    }
+
+    .prettypress_meta:last-of-type {
+      margin-left: 0.5%;
+      margin-right: 0;
+      float: right;
+    }
+
+    .prettypress_meta_last {
+      margin-left: 0.5%;
+      margin-right: 0;
+      float: right;
+    }
+
+    .prettypress_widget {
+      margin: 0 0 1em 0;
+      padding: 1em;
+      @include borderbox();
+
+      h4 {
+        font-weight: normal;
+        margin: 0 0 1em 0;
+      }
+
+      input, textarea {
+        font-size: 16px;
+        padding: 0.4em 0.5em;
+        font-family: 'Open sans', Helvetica, Arial, sans-serif;
+        font-size: 200;
+        @include borderbox();
+      }
+
+      ul.prettypress_categories {
+        margin: 0;
+        padding: 0;
+
+        input {
+          display: inline;
+          float: none;
+          width: auto;
+
+        }
+
+        li {
+          list-style-type: none;
+          display: inline-block;
+          width: 46%;
+          margin-right: 3%;
+        }
+      }
+
+    }
+
   }
 
 

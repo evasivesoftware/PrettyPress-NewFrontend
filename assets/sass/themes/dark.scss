@@ -1,5 +1,6 @@
 .prettypress-editor {
   background: #2d2d2d;
+  color: #ddd;
   
   .sidebar {
     background: #1a1a1a;
@@ -43,5 +44,20 @@
     }
     
   }
+
+
+  .tab-meta {
+    .featured-image {
+      border: 2px dashed #aaa;
+    }
+    .prettypress_widget {
+      background: #222;
+
+      input, textarea {
+        background: #1a1a1a;
+      }
+    }
+  }
+
  
 }
